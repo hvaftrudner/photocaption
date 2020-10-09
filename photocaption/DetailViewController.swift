@@ -8,14 +8,32 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var textView: UITextView!
+    var name: String?
+    var image: UIImage?
+    var caption: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        guard let nameToLoad = name else {return}
+        guard let imageToLoad = image else {return}
+        guard let textToLoad = caption else {return}
+        
+        title = nameToLoad
+        imageView.image = imageToLoad
+        textView.text = textToLoad
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view did load")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
-
     /*
     // MARK: - Navigation
 
